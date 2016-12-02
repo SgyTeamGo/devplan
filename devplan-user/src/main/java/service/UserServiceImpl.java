@@ -13,13 +13,10 @@ import java.util.List;
  * Created by meruzhan.gasparyan on 29-Nov-16.
  */
 
-
 @Service("userService")
 @Repository
 @Transactional
 public class UserServiceImpl implements UserService {
-
-
     private UserDao userDao;
 
     public List<User> loadAll() {
@@ -34,7 +31,6 @@ public class UserServiceImpl implements UserService {
         return userDao.findByFirstName(firstName);
     }
 
-
     public User loadByUserName(String userName) {
         return userDao.findByUserName(userName);
     }
@@ -43,16 +39,12 @@ public class UserServiceImpl implements UserService {
         userDao.delete(user);
     }
 
-
     public User save(User user) {
         return userDao.save(user);
     }
-
 
     @Autowired
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
-
-
 }

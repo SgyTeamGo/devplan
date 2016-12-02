@@ -1,5 +1,7 @@
 package model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,16 +12,17 @@ import java.util.Date;
 
 @Entity
 @Table(name = "events")
+@Component
 public class Event implements Serializable {
-
     long id;
     Date startDate;
     Date endDate;
 
+    String title;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -28,7 +31,7 @@ public class Event implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "START_DATE")
+    @Column(name = "start_date")
     public Date getStartDate() {
         return startDate;
     }
@@ -37,7 +40,7 @@ public class Event implements Serializable {
         this.startDate = startDate;
     }
 
-    @Column(name = "END_DATE")
+    @Column(name = "end_date")
     public Date getEndDate() {
         return endDate;
     }
@@ -46,10 +49,20 @@ public class Event implements Serializable {
         this.endDate = endDate;
     }
 
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
                 "id=" + id +
+                ", title=" + title +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';

@@ -14,11 +14,9 @@ import java.util.List;
  */
 @Repository
 public interface EventDao extends CrudRepository<Event, Long> {
-
     @Query(countQuery = "select e from events e where start_date =:startDate")
     List<Event> findEventByStartDate(@Param("startDate") Date startDate);
 
-    @Query(countQuery = "select e from events e where title like '%title%'")
+    @Query(countQuery = "select e from events e where title like '%:title%'")
     List<Event> findEventsByTitle(@Param("title") String title);
-
 }

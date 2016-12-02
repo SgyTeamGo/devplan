@@ -1,4 +1,4 @@
-package service;
+package config;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -28,9 +28,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages =  {"model" , "dao", "service"})
 @Configuration
 @ComponentScan(basePackages ={"model" , "dao", "service"})
-@PropertySource("classpath:dbConfig.properties")
-public class EventServiceConfig {
-
+@PropertySource("classpath:db.config.properties")
+public class EventConfig {
     @Autowired
     Environment env;
 
@@ -44,7 +43,6 @@ public class EventServiceConfig {
         return dataSource;
     }
 
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -55,7 +53,6 @@ public class EventServiceConfig {
         em.setJpaProperties(getProperties());
         return em;
     }
-
 
     @Bean
     public PlatformTransactionManager transactionManager() {
@@ -73,6 +70,4 @@ public class EventServiceConfig {
         properties.put("hibernate.show_sql", Boolean.valueOf(env.getProperty("hibernate.show_sql")));
         return properties;
     }
-
-
 }

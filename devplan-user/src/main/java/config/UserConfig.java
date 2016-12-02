@@ -1,5 +1,4 @@
-package service;
-
+package config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,9 +26,8 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages =  {"model" , "dao", "service"})
 @Configuration
 @ComponentScan(basePackages ={"model" , "dao", "service"})
-@PropertySource("classpath:dbConf.properties")
-public class UserServiceConf {
-
+@PropertySource("classpath:db.config.properties")
+public class UserConfig {
     @Autowired
      Environment env;
 
@@ -42,7 +40,6 @@ public class UserServiceConf {
         dataSource.setPassword(env.getProperty("db.password"));
         return dataSource;
     }
-
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -72,6 +69,4 @@ public class UserServiceConf {
         properties.put("hibernate.show_sql", Boolean.valueOf(env.getProperty("hibernate.show_sql")));
         return properties;
     }
-
-
 }

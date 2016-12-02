@@ -1,5 +1,7 @@
 package model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,6 +12,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
+@Component
 public class User implements Serializable {
 
 
@@ -31,8 +34,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-
-    @Column(name = "FIRST_NAME")
+    @Column(name = "first_name")
     public String getFirstName() {
         return this.firstName;
     }
@@ -42,7 +44,7 @@ public class User implements Serializable {
     }
 
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "last_name")
     public String getLastName() {
         return this.lastName;
     }
@@ -51,7 +53,7 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    @Column(name = "USERNAME")
+    @Column(name = "username")
     public String getUserName() {
         return this.userName;
     }
