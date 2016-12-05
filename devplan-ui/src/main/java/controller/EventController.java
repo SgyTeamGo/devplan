@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
@@ -14,6 +15,7 @@ import service.EventService;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by zaven.chilingaryan on 12/2/2016.
@@ -21,6 +23,7 @@ import java.util.Date;
 @Controller
 @RequestMapping("/events")
 public class EventController {
+
     @Autowired
     private EventService eventService;
 
@@ -29,7 +32,7 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String loadAllEvents() throws JsonProcessingException {
+    public String loadAllEvents(@RequestParam Map<String, String> params) throws JsonProcessingException {
         return mapper.writeValueAsString(eventService.loadAllEvents());
     }
 
@@ -38,20 +41,6 @@ public class EventController {
     @ResponseBody
     public String loadEventById(@PathVariable Long id) throws JsonProcessingException {
         return mapper.writeValueAsString(eventService.loadEventById(id));
-    }
-
-
-    @RequestMapping(value = "{startDate}", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public String loadEventByStartDate(@PathVariable Date startDate) throws JsonProcessingException {
-        return mapper.writeValueAsString(eventService.loadByStartDate(startDate));
-    }
-
-
-    @RequestMapping(value = "{title}", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public String loadEventByTitle(@PathVariable String title) throws JsonProcessingException {
-        return mapper.writeValueAsString(eventService.loadByTitle(title));
     }
 
 
