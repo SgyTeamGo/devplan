@@ -33,6 +33,8 @@ public class EventController {
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String loadAllEvents(@RequestParam Map<String, String> params) throws JsonProcessingException {
+
+        System.out.println(params);
         return mapper.writeValueAsString(eventService.loadAllEvents());
     }
 
