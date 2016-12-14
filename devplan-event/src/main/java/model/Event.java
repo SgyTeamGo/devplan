@@ -17,7 +17,6 @@ public class Event implements Serializable {
     long id;
     Date startDate;
     Date endDate;
-
     String title;
 
     @Id

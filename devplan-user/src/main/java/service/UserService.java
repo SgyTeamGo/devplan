@@ -3,6 +3,7 @@ package service;
 import model.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by meruzhan.gasparyan on 29-Nov-16.
@@ -11,13 +12,15 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> loadAll();
+    List<User> loadAll(Map<String, String> orders);
 
     User loadById(Long id);
 
     User loadByFirstName(String firstName);
 
-    User loadByUserName(String userName);
+    Map<String, Object> signIn(String userName, String password);
+
+    User loadUserByUserName(String userName);
 
     void delete(User user);
 

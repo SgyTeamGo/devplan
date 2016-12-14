@@ -23,13 +23,13 @@ import java.util.Properties;
  */
 
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages =  {"model" , "dao", "service"})
+@EnableJpaRepositories(basePackages = {"model", "dao", "service"})
 @Configuration
-@ComponentScan(basePackages ={"model" , "dao", "service"})
+@ComponentScan(basePackages = {"model", "dao", "service", "filter", "util"})
 @PropertySource("classpath:db.config.properties")
 public class UserConfig {
     @Autowired
-     Environment env;
+    Environment env;
 
     @Bean("dataSourcs")
     public DataSource dataSource() {
@@ -45,7 +45,7 @@ public class UserConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("model" , "dao", "service");
+        em.setPackagesToScan("model", "dao", "service");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(getProperties());
