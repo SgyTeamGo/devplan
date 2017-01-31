@@ -18,6 +18,4 @@ public interface UserDao extends CrudRepository<User, Long>, JpaSpecificationExe
 
     @Query(countQuery = "select u from  users u where username =:userName")
     User findByUserName(@Param("userName") String userName);
-
-
 }

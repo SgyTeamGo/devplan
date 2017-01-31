@@ -1,4 +1,4 @@
-package config;
+package app.config;
 
 import javax.sql.DataSource;
 import java.util.Properties;

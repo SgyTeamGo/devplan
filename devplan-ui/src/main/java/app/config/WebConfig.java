@@ -1,5 +1,7 @@
-package config;
+package app.config;
 
+import app.config.EventConfig;
+import app.config.UserConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.*;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "controller")
+@ComponentScan(basePackages = "app.controller")
 @Import({UserConfig.class, EventConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
@@ -23,15 +25,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return new ObjectMapper();
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/events/**").allowedOrigins("http://localhost:4200");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurerAdapter() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/events/**").allowedOrigins("*");
+//                registry.addMapping("/users/**").allowedOrigins("*");
+//            }
+//        };
+//    }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

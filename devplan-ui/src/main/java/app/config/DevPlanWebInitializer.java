@@ -1,4 +1,4 @@
-package config;
+package app.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -7,7 +7,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  */
 public class DevPlanWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[0];
+        return new Class<?>[]{WebConfig.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
@@ -15,6 +15,6 @@ public class DevPlanWebInitializer extends AbstractAnnotationConfigDispatcherSer
     }
 
     protected String[] getServletMappings() {
-        return new String[]{"/", "/user"};
+        return new String[]{"/", "/user", "/events"};
     }
 }
