@@ -23,8 +23,6 @@ public class EventController {
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public List<Event> loadAllEvents(/*HttpServletResponse response, */@RequestParam Map<String, String> params) {
-//        response.addHeader("Access-Control-Allow-Origin", "*");
-        System.out.println(params);
         return eventService.loadAllEvents();
     }
 

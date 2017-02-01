@@ -25,17 +25,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return new ObjectMapper();
     }
 
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurerAdapter() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/events/**").allowedOrigins("*");
-//                registry.addMapping("/users/**").allowedOrigins("*");
-//            }
-//        };
-//    }
-
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
