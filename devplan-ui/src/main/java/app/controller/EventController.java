@@ -22,7 +22,7 @@ public class EventController {
     @CrossOrigin(origins = "*")
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<Event> loadAllEvents(/*HttpServletResponse response, */@RequestParam Map<String, String> params) {
+    public List<Event> loadAllEvents(@RequestParam Map<String, String> params) {
         return eventService.loadAllEvents();
     }
 

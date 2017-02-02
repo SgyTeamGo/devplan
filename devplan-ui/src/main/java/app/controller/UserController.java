@@ -26,14 +26,13 @@ public class UserController {
         return userService.loadAll(requestParameters);
     }
 
-
     @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
 
     public User loadUserById(@PathVariable Long id) {
         return userService.loadById(id);
-    }
 
+    }
 
     @RequestMapping(method = RequestMethod.DELETE, produces = "application/json")
     @ResponseBody
